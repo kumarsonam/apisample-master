@@ -44,18 +44,37 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     private String contribution = "Put Man on Mars";
     private String criticism = "Too Honest";
 
+    public void handleSendText(Intent intent) {
+        String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+        if (sharedText != null) {
+            personality = sharedText;
+
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Test Code to add basic card
+        // Get intent, action and MIME type
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if ("text/plain".equals(type)) {
+                handleSendText(intent); // Handle text being sent
+            }
+        }
+
+            // Test Code to add basic card
         final AddContentApi api = new AddContentApi(MainActivity.this);
 // Add new deck if one doesn't already exist
         Long did = api.findDeckIdByName("PIN");
 
         if (did != null) {
-            Toast.makeText(MainActivity.this, "Found Deck", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Found Deck PIN!", Toast.LENGTH_LONG).show();
         }
 
         Long mid = api.findModelIdByName("pin", 2);
@@ -63,10 +82,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             Toast.makeText(MainActivity.this, "Found MID PIN!", Toast.LENGTH_LONG).show();
 
         }
-        personality = "Sonam Kumar";
-        field = "IAS";
-        contribution = "Put Man on Mars";
-        criticism = "Too Honest";
+
 
         api.addNewNote(mid, did, new String[] {personality, field, contribution, criticism}, "pin");
 
