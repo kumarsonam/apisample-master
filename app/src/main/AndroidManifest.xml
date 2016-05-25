@@ -57,6 +57,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ichi2.apisample.MainActivity" />
         </activity>
+        <activity
+            android:name=".Pin"
+            android:label="@string/title_activity_pin"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ichi2.apisample.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

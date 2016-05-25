@@ -11,7 +11,9 @@
     <string name="issues">"Issues Card"</string>
     <string name="data">"Data Card"</string>
     <string name="definition">"Definition Card"</string>
+    <string name="pin">"Pin Card"</string>
     <string name="title_activity_issues">Issues</string>
     <string name="title_activity_data">Data</string>
     <string name="title_activity_definition">Definition</string>
+    <string name="title_activity_pin">Pin</string>
 </resources>
