@@ -186,7 +186,7 @@ public class Issues extends MainActivity {
                 }
 
 
-                api.addNewNote(mid, did, new String[]{issue, mnemonics, definition, for_issue, cases_for, against, cases_against, conclusion, evernote}, "pin");
+                api.addNewNote(mid, did, new String[]{issue, mnemonics, definition, for_issue, cases_for, against, cases_against, conclusion, evernote}, "IAS");
 
                 Toast.makeText(Issues.this, "\n Issue : " + issue + "\n Mnemonics : " + mnemonics + "\n Definition : " + definition + "\n For: " + for_issue + "\n Cases for:" + cases_for + "\n Against:" + against + "Cases against:" + cases_against + "Conclusion: " + conclusion + "\n Evernote:" + evernote, Toast.LENGTH_LONG).show();
 

@@ -7,5 +7,7 @@
                   android:title="@string/issues" />
     <item android:id="@+id/data"
                   android:title="@string/data" />
+    <item android:id="@+id/definition"
+        android:title="@string/definition" />
 
 </menu>

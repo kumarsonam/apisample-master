@@ -8,7 +8,10 @@
     <string name="n_items_added">%d items added to AnkiDroid</string>
     <string name="card_add_fail">Error adding cards to AnkiDroid</string>
     <string name="permission_denied">Couldn\'t get permission to access the AnkiDroid database</string>
-    <string name="issues">"Issues Cards"</string>
-    <string name="data">"Data Cards"</string>
+    <string name="issues">"Issues Card"</string>
+    <string name="data">"Data Card"</string>
+    <string name="definition">"Definition Card"</string>
     <string name="title_activity_issues">Issues</string>
+    <string name="title_activity_data">Data</string>
+    <string name="title_activity_definition">Definition</string>
 </resources>
