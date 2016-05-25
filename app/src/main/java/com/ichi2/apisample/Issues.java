@@ -1,35 +1,20 @@
 package com.ichi2.apisample;
 
-import android.app.Activity;
 import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.app.Activity;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ShareCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.ClipboardManager;
-import android.util.Log;
-import android.util.SparseBooleanArray;
-import android.view.ActionProvider;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -38,24 +23,42 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.ichi2.anki.api.AddContentApi;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
+/*
+public class Issues extends Activity {
 
-public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_issues);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+}
+*/
+
+public class Issues extends MainActivity {
     public static final String LOG_TAG = "AnkiDroidApiSample";
     private static final int AD_PERM_REQUEST = 0;
 
     private ListView mListView;
     private ArrayList<HashMap<String, String>> mListData;
 
-    static EditText SharedText1;
+    private String issue = "";
+    private String mnemonics = "";
+    private String definition = "";
+    private String for_issue = "";
+    private String cases_for = "";
+    private String against = "";
+    private String cases_against = "";
+    private String conclusion = "";
+    private String evernote = "";
 
-    private String personality = "";
-    private String field = "";
-    private String contribution = "";
-    private String criticism = "";
 
+
+
+    //EditText SharedText1;
 
     int save = 0;
 
@@ -114,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
                 //Toast.makeText(MainActivity.this, "Button Clicked", Toast.LENGTH_LONG).show();
 
-                personality = charseq.toString();
+                issue = charseq.toString();
                 //Toast.makeText(MainActivity.this, "\n Personality : " + personality + "\n Field : " + field + "\n Contribution : " + contribution + "\n Criticism: " + criticism, Toast.LENGTH_LONG).show();
 
                 save = 1;
@@ -126,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 Button button2 = (Button) findViewById(R.id.button2);
 
                 //Toast.makeText(MainActivity.this, "Button2 Clicked", Toast.LENGTH_LONG).show();
-                field = charseq.toString();
+                mnemonics = charseq.toString();
 
                 save = 1;
 
@@ -138,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 Button button3 = (Button) findViewById(R.id.button3);
 
                 //Toast.makeText(MainActivity.this, "Button3 Clicked", Toast.LENGTH_LONG).show();
-                contribution = charseq.toString();
+                definition = charseq.toString();
 
                 save = 1;
 
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 Button button4 = (Button) findViewById(R.id.button4);
 
                 //Toast.makeText(MainActivity.this, "Button4 Clicked", Toast.LENGTH_LONG).show();
-                criticism = charseq.toString();
+                for_issue = charseq.toString();
 
                 save = 1;
 
@@ -162,30 +165,85 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
                 //Toast.makeText(MainActivity.this, "Button5 Clicked", Toast.LENGTH_LONG).show();
                 if (save != 1) {
-                    Toast.makeText(MainActivity.this, "All fields empty!!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Issues.this, "All fields empty!!!", Toast.LENGTH_LONG).show();
                     break;
                 }
 
                 // Test Code to add basic card
-                final AddContentApi api = new AddContentApi(MainActivity.this);
+                final AddContentApi api = new AddContentApi(Issues.this);
 
                 // Add new deck if one doesn't already exist
-                Long did = api.findDeckIdByName("PIN");
+                Long did = api.findDeckIdByName("Issues");
 
                 if (did != null) {
                     //Toast.makeText(MainActivity.this, "Found Deck PIN!", Toast.LENGTH_LONG).show();
                 }
 
-                Long mid = api.findModelIdByName("pin", 2);
+                Long mid = api.findModelIdByName("IAS", 2);
                 if (mid != null) {
                     //Toast.makeText(MainActivity.this, "Found MID PIN!", Toast.LENGTH_LONG).show();
 
                 }
 
 
-                api.addNewNote(mid, did, new String[]{personality, field, contribution, criticism}, "pin");
+                api.addNewNote(mid, did, new String[]{issue, mnemonics, definition, for_issue, cases_for, against, cases_against, conclusion, evernote}, "pin");
 
-                Toast.makeText(MainActivity.this, "\n Personality : " + personality + "\n Field : " + field + "\n Contribution : " + contribution + "\n Criticism: " + criticism, Toast.LENGTH_LONG).show();
+                Toast.makeText(Issues.this, "\n Issue : " + issue + "\n Mnemonics : " + mnemonics + "\n Definition : " + definition + "\n For: " + for_issue + "\n Cases for:" + cases_for + "\n Against:" + against + "Cases against:" + cases_against + "Conclusion: " + conclusion + "\n Evernote:" + evernote, Toast.LENGTH_LONG).show();
+
+                break;
+
+            case R.id.button6:
+
+                Button button6 = (Button) findViewById(R.id.button6);
+
+                //Toast.makeText(MainActivity.this, "Button4 Clicked", Toast.LENGTH_LONG).show();
+                cases_for = charseq.toString();
+
+                save = 1;
+
+                break;
+
+            case R.id.button7:
+
+                Button button7 = (Button) findViewById(R.id.button7);
+
+                //Toast.makeText(MainActivity.this, "Button4 Clicked", Toast.LENGTH_LONG).show();
+                against = charseq.toString();
+
+                save = 1;
+
+                break;
+
+            case R.id.button8:
+
+                Button button8 = (Button) findViewById(R.id.button8);
+
+                //Toast.makeText(MainActivity.this, "Button4 Clicked", Toast.LENGTH_LONG).show();
+                cases_against = charseq.toString();
+
+                save = 1;
+
+                break;
+
+            case R.id.button9:
+
+                Button button9 = (Button) findViewById(R.id.button9);
+
+                //Toast.makeText(MainActivity.this, "Button4 Clicked", Toast.LENGTH_LONG).show();
+                conclusion = charseq.toString();
+
+                save = 1;
+
+                break;
+
+            case R.id.button10:
+
+                Button button10 = (Button) findViewById(R.id.button10);
+
+                //Toast.makeText(MainActivity.this, "Button4 Clicked", Toast.LENGTH_LONG).show();
+                evernote = charseq.toString();
+
+                save = 1;
 
                 break;
 
@@ -194,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
 
             default:
-                Toast.makeText(MainActivity.this, "Please select some text first!!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(Issues.this, "Please select some text first!!!", Toast.LENGTH_LONG).show();
 
         }
 
@@ -205,25 +263,29 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_issues);
 
-        hideKeyboard(MainActivity.this); // not working
+        hideKeyboard(Issues.this); // not working
+
 
         SharedText1 = (EditText) findViewById(R.id.editText);
-        imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE); // not working
+/*        imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE); // not working
         imm.hideSoftInputFromWindow(SharedText1.getWindowToken(), 0); // not working
 
-
+*/
         // Get intent, action and MIME type
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
 
+        handleSendText(intent); // Handle text being sent
+        /*
         if (Intent.ACTION_SEND.equals(action) && type != null) {
             if ("text/plain".equals(type)) {
                 handleSendText(intent); // Handle text being sent
             }
-        }
+        }*/
+
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -272,30 +334,5 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         client.disconnect();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.issues:
-                //Toast.makeText(MainActivity.this, "issues option selected", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(MainActivity.this, Issues.class);
-                SharedText1 = (EditText) findViewById(R.id.editText);
-                String send_text = SharedText1.getText().toString();
-                intent.putExtra(Intent.EXTRA_TEXT, send_text);
-                startActivity(intent);
-                return true;
-            case R.id.data:
-                //Toast.makeText(MainActivity.this, "data option selected", Toast.LENGTH_LONG).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
-}
