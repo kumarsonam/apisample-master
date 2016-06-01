@@ -9,6 +9,8 @@
                   android:title="@string/data" />
     <item android:id="@+id/definition"
         android:title="@string/definition" />
+    <item android:id="@+id/basic"
+        android:title="@string/basic" />
     <item android:id="@+id/pin"
         android:title="@string/pin" />
 </menu>
