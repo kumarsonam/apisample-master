@@ -97,13 +97,13 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     public void onClick(View v) {
 
-        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        ClipData clip = clipboard.getPrimaryClip();
-        CharSequence charseq;
+        //android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //ClipData clip = clipboard.getPrimaryClip();
+        //CharSequence charseq;
 
         //if (clip.getDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-        ClipData.Item item = clip.getItemAt(0);
-        charseq = item.getText();
+        //ClipData.Item item = clip.getItemAt(0);
+        //charseq = item.getText();
         //Toast.makeText(MainActivity.this,  "CharSequence : " + charseq + "\n Subsequence: " + charseq.subSequence(16,charseq.length()-2), Toast.LENGTH_LONG).show();
         //}
 
@@ -177,10 +177,19 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 }
 
                 String cloze = SharedText1.getText().toString();
+                String[] cloze_array = new String[]{cloze, "", "", ""};
 
-                api.addNewNote(mid, did, new String[]{cloze, "", "", ""}, "Cloze");
+                if (cloze != null) {
 
-                Toast.makeText(MainActivity.this, "\n Add cloze to : " + cloze, Toast.LENGTH_LONG).show();
+                    api.addNewNote(mid, did, cloze_array, "Cloze");
+
+                    Toast.makeText(MainActivity.this, "\n Add cloze to : " + cloze, Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    Toast.makeText(MainActivity.this, "Please select some text first!!!", Toast.LENGTH_LONG).show();
+
+                }
 
                 break;
 
