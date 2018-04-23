@@ -104,7 +104,7 @@ public class Basic extends MainActivity {
 
                 Button button = (Button) findViewById(R.id.button);
 
-                //Toast.makeText(MainActivity.this, "Button Clicked", Toast.LENGTH_LONG).show();
+                //Toast.makeText(Basic.this, "Button Clicked", Toast.LENGTH_LONG).show();
 
                 front = charseq.toString();
                 //Toast.makeText(MainActivity.this, "\n Personality : " + personality + "\n Field : " + field + "\n Contribution : " + contribution + "\n Criticism: " + criticism, Toast.LENGTH_LONG).show();
@@ -117,7 +117,7 @@ public class Basic extends MainActivity {
 
                 Button button2 = (Button) findViewById(R.id.button2);
 
-                //Toast.makeText(MainActivity.this, "Button2 Clicked", Toast.LENGTH_LONG).show();
+                //Toast.makeText(Basic.this, "Button2 Clicked", Toast.LENGTH_LONG).show();
                 back = charseq.toString();
 
                 save = 1;
@@ -129,7 +129,7 @@ public class Basic extends MainActivity {
 
                 Button button5 = (Button) findViewById(R.id.button5);
 
-                //Toast.makeText(MainActivity.this, "Button5 Clicked", Toast.LENGTH_LONG).show();
+                //Toast.makeText(Basic.this, "Button5 Clicked", Toast.LENGTH_LONG).show();
                 if (save != 1) {
                     Toast.makeText(Basic.this, "All fields empty!!!", Toast.LENGTH_LONG).show();
                     break;

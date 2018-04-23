@@ -167,12 +167,12 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 Long did = api.findDeckIdByName("Cloze");
 
                 if (did != null) {
-                    //Toast.makeText(MainActivity.this, "Found Deck PIN!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Found Deck Cloze!", Toast.LENGTH_LONG).show();
                 }
 
                 Long mid = api.findModelIdByName("Cloze", 2);
                 if (mid != null) {
-                    //Toast.makeText(MainActivity.this, "Found MID PIN!", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainActivity.this, "Found MID Cloze!", Toast.LENGTH_LONG).show();
 
                 }
 
